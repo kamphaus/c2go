@@ -367,7 +367,10 @@ func transpileBinaryOperator(n *ast.BinaryOperator, p *program.Program, exprIsSt
 		}
 	}
 
-	if operator == token.ADD_ASSIGN || operator == token.SUB_ASSIGN {
+	if operator == token.ADD_ASSIGN || operator == token.SUB_ASSIGN || operator == token.ASSIGN ||
+		operator == token.OR || operator == token.AND || operator == token.LAND || operator == token.MUL ||
+		operator == token.LOR || operator == token.ADD || operator == token.SUB || operator == token.REM ||
+		operator == token.QUO {
 		right, err = types.CastExpr(p, right, rightType, returnType)
 	}
 
