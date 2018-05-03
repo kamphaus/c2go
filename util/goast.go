@@ -179,6 +179,10 @@ func NewBinaryExpr(left goast.Expr, operator token.Token, right goast.Expr,
 		return NewFuncClosure(returnType, NewExprStmt(b), &goast.ReturnStmt{
 			Results: []goast.Expr{left},
 		})
+	} else if isCalcOperator(operator) {
+		return &goast.ParenExpr{
+			X: b,
+		}
 	}
 	return b
 }
@@ -197,6 +201,35 @@ func isAssignishOperator(t token.Token) bool {
 		token.SHR_ASSIGN,     // >>=
 		token.AND_NOT_ASSIGN, // &^=
 		token.ASSIGN:         // =
+		return true
+	}
+	return false
+}
+
+func isCalcOperator(t token.Token) bool {
+	switch t {
+	case token.ADD, // +
+		token.SUB,     // -
+		token.MUL,     // *
+		token.QUO,     // /
+		token.REM,     // %
+		token.AND,     // &
+		token.OR,      // |
+		token.XOR,     // ^
+		token.SHL,     // <<
+		token.SHR,     // >>
+		token.AND_NOT, // &^
+		token.LAND,    // &&
+		token.LOR,     // ||
+		token.INC,     // ++
+		token.DEC,     // --
+		token.EQL,     // ==
+		token.LSS,     // <
+		token.GTR,     // >
+		token.NOT,     // !
+		token.NEQ,     // !=
+		token.LEQ,     // <=
+		token.GEQ:     // >=
 		return true
 	}
 	return false
