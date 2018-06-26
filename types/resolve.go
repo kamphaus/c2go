@@ -345,7 +345,7 @@ func ResolveType(p *program.Program, s string) (_ string, err error) {
 	// slices.
 	// int [2][3] -> [][]int
 	// int [2][3][4] -> [][][]int
-	search2 := util.GetRegex(`([\w\* ]+)((\[\d+\])+)`).FindStringSubmatch(s)
+	search2 := util.GetRegex(`([\w\* ]+)((\[\d*\])+)`).FindStringSubmatch(s)
 	if len(search2) > 2 {
 		t, err := ResolveType(p, search2[1])
 

@@ -7,6 +7,19 @@
 [![Twitter](https://img.shields.io/twitter/url/https/github.com/elliotchance/c2go.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 [![GoDoc](https://godoc.org/github.com/elliotchance/c2go?status.svg)](https://godoc.org/github.com/elliotchance/c2go)
 
+# Fork of the c2go project
+
+From [github.com/elliotchance/c2go](https://www.github.com/elliotchance/c2go)
+
+#### WARNING!
+
+I use the master branch (`kamphaus:master` to integration test the combination of all my pull requests).
+Thus it might be unstable. I also regularly rebase against elliotchance's master branch (leaving out accepted PRs).
+
+If you want to use stable c2go use: [github.com/elliotchance/c2go](https://www.github.com/elliotchance/c2go)
+
+# About the project
+
 A tool for converting C to Go.
 
 The goals of this project are:

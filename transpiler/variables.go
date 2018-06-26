@@ -423,15 +423,17 @@ func transpileMemberExpr(n *ast.MemberExpr, p *program.Program) (
 	lhsResolvedType, err := types.ResolveType(p, lhsType)
 	p.AddMessage(p.GenerateWarningMessage(err, n))
 
+	// remove const type prefix
+	lhsCleanTpye := types.CleanCType(lhsType)
 	// lhsType will be something like "struct foo"
-	structType := p.GetStruct(lhsType)
+	structType := p.GetStruct(lhsCleanTpye)
 	// added for support "struct typedef"
 	if structType == nil {
-		structType = p.GetStruct("struct " + lhsType)
+		structType = p.GetStruct("struct " + lhsCleanTpye)
 	}
 	// added for support "union typedef"
 	if structType == nil {
-		structType = p.GetStruct("union " + lhsType)
+		structType = p.GetStruct("union " + lhsCleanTpye)
 	}
 	rhs := n.Name
 	rhsType := "void *"

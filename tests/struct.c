@@ -345,7 +345,7 @@ void struct_inside_union()
 }
 
 typedef int pointx;
-typedef struct  {
+typedef struct {
     pointx x;
     int y;
 } Point2;
@@ -462,7 +462,7 @@ int main()
 	struct u yy;
 	yy.y = 42;
 	is_eq(yy.y,42);
-	
+
 	diag("Typedef struct with same name")
 	{
 		typedef struct Uq Uq;
